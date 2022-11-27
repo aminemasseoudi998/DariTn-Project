@@ -1,21 +1,18 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-# Cloudpi
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3.
 =======
-# PiDevFrontEnd
+# FrontEnd
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.2.
 >>>>>>> user
 =======
-# FrontPiCloud
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.2.
 >>>>>>> annonce
 =======
-# DariTnAngular1.0
+# DariTnAngular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.2.
 >>>>>>> forum-comment
