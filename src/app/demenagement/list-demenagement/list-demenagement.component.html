@@ -1,0 +1,128 @@
+<!--/ Intro Single star /-->
+
+<section class="intro-single" xmlns="http://www.w3.org/1999/html">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-8">
+        <div class="title-single-box">
+          <h1 class="title-single">Liste des demenagements</h1>
+          <span class="color-text-a">tout les demenagement</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<div class="card" class="text-center">
+  <table class="table">
+    <thead style="background-color: rgb(192, 183, 183);">
+    <th scope="col" class="text-center ">Ville de depart</th>
+    <th scope="col" class="text-center ">Ville d'arrive</th>
+    <th scope="col" class="text-center ">Date demenagement</th>
+    <th scope="col" class="text-center ">Transporteur</th>
+    <th scope="col" class="text-center ">Numero du transporteur</th>
+    <th scope="col" class="text-center ">Etat</th>
+    <th scope="col" class="text-center ">Action</th>
+    </thead>
+
+    <tbody>
+    <tr *ngFor='let d of listDemenagement'>
+
+      <td>{{d.villeDepart}}</td>
+      <td>{{d.villeArrive}}</td>
+      <td>{{d.dateDemenagement}}</td>
+      <td>{{d.transporteur.nom}}</td>
+      <td>{{d.transporteur.num}}</td>
+      <td *ngIf="d.transporteur.etat==='DISPONIBLE'">{{d.transporteur.etat}}</td>
+
+      <td>
+        <button type="button" class="btn btn-outline-primary"
+                (click)="open(mymodal)">edit
+        </button>
+        <ng-template #mymodal let-modal>
+          <div class="modal-header" >
+            <h4 class="modal-title" id="modal-basic-title">Edit</h4>
+            <button type="button" class="close" aria-label="Close"
+                    (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true" (click)="cancel()">×</span>
+
+            </button>
+          </div>
+          <div>
+            <div>
+              <form>
+                <div class="modal-body" >
+
+                  <div class="row" class="col-md-5">
+                    <label>Ville de depart</label>
+                    <input type="text" placeholder="Ville de depart" data-rule="minlen:4"
+                           data-msg="Please enter at least 4 chars"
+                           [(ngModel)]="d.villeDepart" [ngModelOptions]="{standalone:true}"/>
+                  </div>
+                  <div class="row" class="col-md-5">
+                    <label>Ville d'arrive</label>
+                    <input type="text" placeholder="Ville d'arrive" data-rule="minlen:4"
+                           data-msg="Please enter at least 4 chars"
+                           [(ngModel)]="d.villeArrive" [ngModelOptions]="{standalone:true}"/>
+                  </div>
+                  <div class="row" class="col-md-5">
+                    <label>Ville de depart</label>
+                    <input type="date" placeholder="Ville de depart" data-rule="minlen:4"
+                           data-msg="Please enter at least 4 chars"
+                           [(ngModel)]="d.dateDemenagement" [ngModelOptions]="{standalone:true}"/>
+                  </div>
+
+                <div class="modal-footer">
+
+                  <button type="button" class="btn btn-info"
+                          (click)="modal.close('Save click')" (click)="cancel()">Cancel
+                  </button>
+
+                </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </ng-template>
+        <button type="button" class="btn btn-outline-danger"
+                (click)="deletedemenagement(d.idDemenagement)">delete
+        </button>
+
+      </td>
+
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

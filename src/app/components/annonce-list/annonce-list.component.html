@@ -1,0 +1,199 @@
+
+
+  <!--/ Intro Single star /-->
+  <section class="intro-single">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-8">
+          <div class="title-single-box">
+            <h1 class="title-single">Annonces Immobilier</h1>
+          </div>
+          <nav class="navbar" style="padding-left: 35px;">
+            <input class="form-control" style="width: 300px;" type="text" name="localisation" [(ngModel)]="localisation" (ngModelChange)="Search()"
+            placeholder="Chercher par ville">
+          </nav>
+        </div>
+        <div class="col-md-12 col-lg-4">
+          <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">
+                <button type="button" class="btn btn-primary" (click)="create()" style="background-color:  #2eca6a ;  border:#2eca6a ;" ><i class="fa fa-plus" aria-hidden="true" ></i> Publier une annonce </button>
+          
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!--/ Intro Single End /-->
+
+  <!--/ Property Grid Star /-->
+  <style>
+    .my-pagination /deep/ .ngx-pagination .current {
+      
+    
+      background: #2eca6a;
+      
+    }
+  </style>
+  <div style="width: 90%; margin-left: 80px; background-color: #b9ebcc;border-radius: 2% ; height: 380px;"*ngIf="nbannoncecoupon !=0">
+    <br>
+  <span style="margin-left: 40px; font-size: 20px; font-weight: 600; background-color:#2eca6a ;" class="badge badge-pill badge-primary">A la une <i style="padding-left: 5px;" class="fa fa-star" aria-hidden="true"></i></span>
+   <section style=" width: 100%; margin-left:0px ;" class="product" *ngIf="nbannoncecoupon !=0" > 
+
+
+       
+    <button class="pre-btn" style="width: 40px; margin-top: 100px;opacity: 1; height: 70px;"><img src="assets/img/fleche.png" alt=""></button>
+    <button style="width: 40px; margin-top: 100px;opacity: 1;height: 70px; " class="nxt-btn"><img src="assets/img/fleche.png" alt=""></button>
+    <div style="padding-left: 25px;" class="product-container" >        
+       
+     
+  <div class="product-card" *ngFor="let a of annoncecoupon" >
+    <div style="height: 250px; border-radius: 5%; border: 3px solid white;" class="product-image">
+    
+        <img [src]="a.placeholder" class="product-thumb" alt="">
+        <button class="card-btn"  [routerLink]="['/annonces',a.id]"> Voir annonce </button>
+    </div>
+    <div class="product-info">
+        <h3 class="product-brand">{{a.titre}}</h3>
+      
+    </div>
+</div>
+        
+    </div>
+</section>
+
+</div>
+<br>
+<hr style="width:80%; margin-left: 140px; border: 2px solid grey;">
+  <section style="margin-left:20px ;" class="property-grid grid">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="grid-option">
+           
+            
+          </div>
+        </div>
+        
+       
+       
+        
+       
+        <div class="col-md-4" *ngFor = "let annonce of annonces | paginate: { itemsPerPage: 3, currentPage: p }">
+          <div class="card-box-a card-shadow">
+            <div class="img-box-a" >
+              <img [src]="annonce.placeholder" alt="" class="img-a img-fluid" style="height: 400px; width: 380px">
+            </div>
+            <div class="card-overlay">
+              <div class="card-overlay-a-content">
+                <div class="card-header-a">
+                  <h2 class="card-title-a">
+                    <a href="#">
+                      <br>{{ annonce.titre }}</a>
+                  </h2>
+                </div>
+                <div class="card-header-a">
+                  <h2 class="card-title-a">
+                    <a href="#">{{ annonce.localisation }}</a>
+                  </h2>
+                </div>
+              
+                <div class="card-body-a">
+                  <div class="price-box d-flex">
+                    <span class="price-a">Prix |  {{ annonce.prix }} DT </span>
+                  </div>
+                  <a  (click)="detailAnnonce(annonce.id)" class="link-a">Cliquer ici pour voir
+                    <span class="ion-ios-arrow-forward"></span>
+                  </a>
+                </div>
+                <div class="card-footer-a">
+                  <ul class="card-info d-flex justify-content-around">
+                    <li>
+                      <h5 class="card-info-title">Surperficie</h5>
+                      <span>{{annonce.surface}}
+                        <sup>2</sup>
+                      </span>
+                    </li>
+                    <li>
+                      <h5 class="card-info-title">Chambres</h5>
+                      <span>{{annonce.nbchambre}}</span>
+                    </li>
+          
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+    </div>
+    <div  style="margin-left:70%;" >    
+      <pagination-controls  class="my-pagination" (pageChange)="p = $event"></pagination-controls>
+    </div>
+
+  </section>
+
+  <div class="container">
+ 
+
+    <h1>Angular Google Maps with Places Search Example</h1>
+  
+    <div class="form-group">
+      <label>Enter address</label>
+      <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()" placeholder="Search Nearest Location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
+    </div>
+  
+    <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+      <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
+        (dragEnd)="markerDragEnd($event)"></agm-marker>
+    </agm-map>
+  
+    <h5>Address: {{address}}</h5>
+   
+
+
+
+
+  </div>
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script>
+    const productContainers = [...document.querySelectorAll('.product-container')];
+const nxtBtn = [...document.querySelectorAll('.nxt-btn')];
+const preBtn = [...document.querySelectorAll('.pre-btn')];
+
+productContainers.forEach((item, i) => {
+    let containerDimensions = item.getBoundingClientRect();
+    let containerWidth = containerDimensions.width;
+
+    nxtBtn[i].addEventListener('click', () => {
+        item.scrollLeft += containerWidth;
+    })
+
+    preBtn[i].addEventListener('click', () => {
+        item.scrollLeft -= containerWidth;
+    })
+})
+  </script>
+
+
+
+  <!--/ Property Grid End /-->
+
+  <!--/ footer Star /-->
+  <!--stylesheet------------->

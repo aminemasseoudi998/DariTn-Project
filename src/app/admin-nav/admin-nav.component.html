@@ -1,0 +1,42 @@
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      
+      <a id="itm" mat-list-item routerLink="/dashboard/admin"><i style="color:#2eca6a; padding-right: 10px;" class="fa fa-user" aria-hidden="true"></i>Utilisateurs</a>
+      <mat-divider></mat-divider>
+      <a id="itm" mat-list-item routerLink="/dashboard/affiche"><i style="color:#2eca6a; padding-right: 10px;" class="fa fa-home" aria-hidden="true"></i>Annonces</a>
+      <mat-divider></mat-divider>
+      <a  id="itm"mat-list-item routerLink="/dashboard/AnnonceStat"><i style="color:#2eca6a; padding-right: 10px;" class="fa fa-pie-chart" aria-hidden="true"></i>Statistique Annonces</a>
+      <mat-divider></mat-divider>
+      <a  id="itm"mat-list-item routerLink="/dashboard/reclamations"><i  style="color:#2eca6a; padding-right: 10px;" class="fa fa-file" aria-hidden="true"></i>Reclamations</a>
+      <mat-divider></mat-divider>
+      <a  id="itm"mat-list-item routerLink="/dashboard/stat-mobilier"><i style="color:#2eca6a; padding-right: 10px;" class="fa fa-pie-chart" aria-hidden="true"></i>Statistique mobillier</a>
+      <mat-divider></mat-divider>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="d-flex justify-content-between">
+      <span>
+            <button
+              type="button"
+              aria-label="Toggle sidenav"
+              mat-icon-button
+              (click)="drawer.toggle()"
+              *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Dari.tn</span>
+      </span>
+
+
+      <button mat-button (click)="deco()">Deconexion</button>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

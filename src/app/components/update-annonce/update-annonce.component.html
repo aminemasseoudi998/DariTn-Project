@@ -1,0 +1,75 @@
+
+<div id="bg">
+<div class="container-fluid"> 
+    <div class="title-box-d section-t4">
+        <h3 class="title-d">Modifier annonce </h3>
+      </div>
+   
+    
+    <div class="form-group">
+        <label> Titre</label>
+        <input type="text" class="form-control" id="titre"
+        [(ngModel)]="annonce.titre" name="titre">
+        
+
+    </div>
+    <div class="form-group">
+        <section>
+              <label> Type d'annonce </label>
+              <select class="custom-select" [(ngModel)]="annonce.typeAnnonce"[ngModelOptions]="{standalone:true}">
+                <option value="Achat">Achat</option>
+                <option value="Location">Location</option>
+              </select>
+         
+        </section>
+      </div>
+      <div class="form-group">
+        <label> Description</label>
+        <input type="text" class="form-control" id="description"
+        [(ngModel)]="annonce.description" name="description">
+
+    </div>
+    <div class="form-group">
+        <label> Localisation</label>
+        <input type="text" class="form-control" id="localisation"
+        [(ngModel)]="annonce.localisation" name="localisation">
+
+    </div>
+
+    <div class="form-group">
+        <label> Prix</label>
+        <input type="text" class="form-control" id="prix"
+        [(ngModel)]="annonce.prix" name="prix">
+
+    </div>
+
+  
+    <div class="form-group">
+        <label> Nombre de Chambres</label>
+        <input type="text" class="form-control" id="nbchambre"
+        [(ngModel)]="annonce.nbchambre" name="nbchambre">
+
+    </div>
+
+    
+
+    <div class="form-group">
+        <label> Surface</label>
+        <input type="text" class="form-control" id="surface"
+        [(ngModel)]="annonce.surface" name="surface">
+
+    </div>
+
+    <input type="file" #img accept="image/*" multiple hidden (change)="imageLoad($event)" 
+    required >
+    <a class="btn-primary btn " class="btn btn-primary"   (click)="img.click()" style="color: white; margin-bottom: 2%;" >Déposer image(s)</a>
+    
+    <div class="modal-footer" >  
+        <button type="button" class="btn btn-danger" (click)="update()" id="RDV"> Modifer </button>
+      </div>  
+
+      
+      
+
+</div>
+</div>

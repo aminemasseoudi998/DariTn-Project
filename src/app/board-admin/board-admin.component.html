@@ -1,0 +1,59 @@
+<section class="intro-single">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-8">
+        <div class="title-single-box">
+          <h1 class="title-single">Liste d'Utilisateurs</h1>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+          
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<!--
+
+<button type="button" class="btn btn-primary"(click)="create()"><i class="fa fa-plus" aria-hidden="true"></i> Add </button>
+
+-->
+
+
+
+
+
+
+<table class="table table-bordered" style="margin-left: 24px;">
+<thead>
+  <tr>
+      <th>Id</th>
+      <th>Pseudo</th>
+      <th>Email</th>
+      <th>Telephone</th>
+      <th>Image</th>
+  
+      
+
+      <th>Actions</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor = "let user of Users" >
+  <td>{{ user.id }}</td>  
+  <td>{{ user.username }}</td>
+  <td>{{ user.email }}</td>
+  <td>{{ user.telephone }}</td>
+  <td><img [src]="user.image" style="width: 70px;" alt=""></td>
+  <td>
+     <!-- <button type="button" class="btn btn-success"(click)="update(annonce.id)"><i class="fa fa-edit"></i> Update </button>&nbsp;&nbsp;
+      --><button type="button" class="btn btn-danger"  (click)="deleteRow(user.id)"><i class="fa fa-trash" aria-hidden="true"></i> Supprimer </button>
+      
+      
+  </td>
+  </tr>
+  
+
+</tbody>
+</table>

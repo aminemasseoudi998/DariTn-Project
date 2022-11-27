@@ -1,0 +1,84 @@
+<section class="intro-single">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-8">
+        <div class="title-single-box">
+          <h1 class="title-single">Our Forum</h1>
+          <span class="color-text-a">Forum News</span>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a routerLink="/home">Home</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              News
+            </li>
+          </ol>
+        </nav>
+      </div>
+      <div class="col-md-12">
+        <a routerLink="/forum/new">
+          <button type="submit" class="btn btn-b-n pull-right">Create New Topic</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="news-single nav-arrow-b">
+  <div class="col-md-12">
+    <div class="container">
+      <div class="row" style="margin-bottom: 70px;" *ngFor="let sujet of listSujet">
+        <div class="col-sm-12 col-md-4">
+          <div class="testimonial-img">
+            <img src="{{ '/assets/img/'+ sujet.image }}" alt="" class="img-fluid">
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-8">
+          <div class="testimonials-content">
+            <p class="testimonial-text">
+              <a routerLink="{{ '/forum/show/'+ sujet.id}}"><strong> {{sujet.titre}} </strong> </a>
+              <br>
+              {{sujet.description}}
+            </p>
+          </div>
+          <div class="testimonial-author-box">
+            <img src="/assets/img/mini-testimonial-1.jpg" alt="" class="testimonial-avatar">
+              <h5 class="testimonial-author">{{sujet.user.username}}</h5>
+          </div>
+          <div *ngIf="sujet.user.id==userlogged.id; then thenBlock"></div>
+          <ng-template #thenBlock> <button type="submit" class="btn btn-danger pull-right showbottom" (click)="deleteSujet(sujet.id)"
+                                           style="position: absolute; right:0; bottom:0;">delete
+          </button> </ng-template>
+
+        </div>
+
+      </div>
+      <div class="row" style="margin-bottom: 70px;">
+        <div class="col-sm-12 col-md-4">
+          <div class="testimonial-img">
+            <img src="/assets/img/testimonial-1.jpg" alt="" class="img-fluid">
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-8">
+          <div class="testimonials-content">
+            <p class="testimonial-text">
+              <a href=""><strong> Titre </strong> </a>
+              <br>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, cupiditate ea nam praesentium
+              debitis hic ber quibusdam
+              voluptatibus officia expedita corpori.
+            </p>
+          </div>
+          <div class="testimonial-author-box">
+            <img src="/assets/img/mini-testimonial-1.jpg" alt="" class="testimonial-avatar">
+            <h5 class="testimonial-author">Albert & Erika</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,63 @@
+<section class="intro-single">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-8">
+        <div class="title-single-box">
+          <h1 class="title-single">Create New Topic</h1>
+          <span class="color-text-a">create</span>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a routerLink="/home">Home</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              News
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 section-t3">
+        <div class="row">
+          <div class="col-md-12">
+            <form class="form-a contactForm"  #f="ngForm" enctype="multipart/form-data">
+              <div id="errormessage"></div>
+              <div class="row">
+                <div class="col-md-12 mb-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control form-control-lg form-control-a"  placeholder="subject" [(ngModel)]="sujet.titre" [ngModelOptions]="{standalone: true}">
+                    <div class="validation"></div>
+                  </div>
+                </div>
+                <div class="col-md-12 mb-3">
+                  <div class="form-group">
+                    <input type="file" class="form-control" [(ngModel)]="sujet.image" [ngModelOptions]="{standalone: true}">
+                    <div class="validation"></div>
+                  </div>
+                </div>
+                <div class="col-md-12 mb-3">
+                  <div class="form-group">
+                    <textarea class="form-control"  cols="45" rows="8"  placeholder="description" [(ngModel)]="sujet.description" [ngModelOptions]="{standalone: true}"></textarea>
+                    <div class="validation"></div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <button type="submit" (click)="add()"  class="btn btn-a">Add Topic</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--/ Contact End /-->
+</section>
+
+

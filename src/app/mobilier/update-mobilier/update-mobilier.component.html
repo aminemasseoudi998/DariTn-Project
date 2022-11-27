@@ -1,0 +1,43 @@
+
+<h1 mat-dialog-title>Modifier un mobilier</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="outline">
+    <mat-label>Titre</mat-label>
+    <input required matInput placeholder="Ajouter un titre" [(ngModel)]="mobilier.titre">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Description</mat-label>
+    <textarea required matInput  placeholder="Ajouter une description" [(ngModel)]="mobilier.description"></textarea>
+  </mat-form-field>
+
+
+
+  <mat-form-field appearance="fill">
+    <mat-label>Etat du mobilier</mat-label>
+    <mat-select [(value)]="mobilier.etatMobilier">
+      <mat-option>None</mat-option>
+      <mat-option value="Bonne">Bonne etat</mat-option>
+      <mat-option value="Mauvaise">à renover </mat-option>
+      <mat-option value="Moyenne">Moyenne</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+
+  <mat-form-field appearance="fill" floatLabel="always">
+    <mat-label>Prix</mat-label>
+    <input matInput type="number" [(ngModel)]="mobilier.prix" class="example-right-align" placeholder="0">
+    <span matPrefix>DT&nbsp;</span>
+    <span matSuffix>.00</span>
+  </mat-form-field>
+
+  <input type="file" #img accept="image/*" multiple hidden (change)="imageLoad($event)" [(ngModel)]="image">
+  <button class="btn-primary btn " (click)="img.click()" >upload image</button>
+
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close >No Thanks</button>
+  <button mat-flat-button (click)="update()">Ok</button>
+
+</div>

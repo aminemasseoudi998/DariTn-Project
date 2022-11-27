@@ -1,0 +1,146 @@
+<div class="container-fluid" *ngIf="!isSuccessful" >
+  
+  <div class="title-box-d section-t3">
+    
+    <h3 class="title-d">Créer une annonce</h3>
+   
+  </div>
+ 
+  <form  name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+  
+      <div class="form-group">
+          <label> Titre de l'annonce</label>
+          <input type="text" class="form-control" id="titre"
+          [(ngModel)]="annonce.titre" #titre="ngModel" name="titre" required>
+          
+  
+      </div>
+      <div class="alert-danger" *ngIf="titre.errors && f.submitted">
+        <div *ngIf="titre.errors['required']">Le titre est obligatoir !</div>
+        
+        </div>
+   
+      <div class="form-group">
+      <section>
+            <label> Type d'annonce </label>
+            <select class="custom-select" [(ngModel)]="annonce.typeAnnonce" name="typeAnnonce" #typeAnnonce="ngModel" [ngModelOptions]="{standalone:true}"
+            required>
+              <option value="Achat">Achat</option>
+              <option value="Location">Location</option>
+            </select>
+       
+      </section>
+    </div>
+    <div class="alert-danger" *ngIf="titre.errors && f.submitted">
+      <div *ngIf="titre.errors['required']">Le type est obligatoir !</div>
+      
+      </div>
+  
+      <div class="form-group">
+          <label> Description</label>
+          <input type="text" class="form-control" id="description"
+          [(ngModel)]="annonce.description" name="description" #description="ngModel" name="description"
+          rrequire>
+  
+      </div>
+      <div class="alert-danger" *ngIf="titre.errors && f.submitted">
+        <div *ngIf="titre.errors['required']">La description est obligatoir !</div>
+        
+        </div>
+      <div class="form-group">
+          <label> Localisation</label>
+          <input type="text" class="form-control" id="localisation"
+          [(ngModel)]="annonce.localisation"  name="localisation" #localisation="ngModel" name="localisation"
+          required>
+  
+      </div>
+      <div class="alert-danger" *ngIf="titre.errors && f.submitted">
+        <div *ngIf="titre.errors['required']">La localisation est obligatoir !</div>
+        
+        </div>
+  
+      <div class="form-group">
+          <label> Prix</label>
+          <input type="text" class="form-control" id="prix"
+          [(ngModel)]="annonce.prix" name="prix" #prix="ngModel" name="prix"
+          required>
+  
+      </div>
+      <div class="alert-danger" *ngIf="titre.errors && f.submitted">
+        <div *ngIf="titre.errors['required']">Le prix est obligatoir !</div>
+        
+        </div>
+  
+    
+      <div class="form-group">
+          <label> Nombre de Chambres</label>
+          <input type="text" class="form-control" id="nbchambre"
+          [(ngModel)]="annonce.nbchambre" name="nbchambre" #nbchambre="ngModel" name="nbchambre"
+          required>
+  
+      </div>
+      <div class="alert-danger" *ngIf="titre.errors && f.submitted">
+        <div *ngIf="titre.errors['required']">Nombre de chambre est obligatoir !</div>
+        
+        </div>
+  
+      
+  
+      <div class="form-group">
+          <label> Surface</label>
+          <input type="text" class="form-control" id="surface"
+          [(ngModel)]="annonce.surface" name="surface" #surface="ngModel" 
+          required>
+  
+      </div>
+      <div class="alert-danger" *ngIf="titre.errors && f.submitted">
+        <div *ngIf="titre.errors['required']">La surface est obligatoir !</div>
+        
+        </div>
+      <!--start upload image !! -->
+    
+        
+       
+    
+      
+    
+    <!--end upload image !!!! -->
+    <input type="file" #img accept="image/*" multiple hidden (change)="imageLoad($event)" 
+    required >
+    <a class="btn-primary btn " class="btn btn-danger" (click)="img.click()" style="color: white; margin-bottom: 2%;" >Déposer image(s)</a>
+    
+    <div class="alert-danger" *ngIf="titre.errors && f.submitted">
+      <div *ngIf="titre.errors['required']"> Image obligatoir !</div>
+      
+      </div>
+
+      <div class="modal-footer" >  
+        <button style="background-color:  #2eca6a ;  border:#2eca6a ;" class="btn btn-success" type="submit">Créer</button>
+      </div> 
+      <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+        Signup failed!<br />{{ errorMessage }}
+      </div> 
+  
+      
+   
+  
+  </form>
+ 
+  </div>
+  <div  *ngIf="isSuccessful" style="padding-bottom: 20px;">
+
+    <img style="padding-left: 430px; padding-top: 30px;" src="assets/img/ajoutannonce.png" alt="">
+    <h1 style="padding-left: 450px; padding-top: 20px;"> Votre annonce a été créée avec succées !</h1>
+    
+    <div style="padding-left: 450px;">
+      <div class="card" style="width: 28rem;">
+        
+        <ul class="list-group list-group-flush">
+          
+          <li class="list-group-item" routerLink="/profile">Voir mon profile et mes annnonces <i style="color: #2eca6a; padding-left: 170px;" class="fa fa-arrow-right" aria-hidden="true"></i> </li>
+          <li class="list-group-item" (click)="affecterCoupon()">Booster mon annonce <i style="color: #2eca6a; padding-left: 250px;" class="fa fa-arrow-right" aria-hidden="true"></i></li>
+          <li class="list-group-item" (click)="createNew()">Créer une autre annonce <i style="color: #2eca6a; padding-left: 235px;" class="fa fa-arrow-right" aria-hidden="true"></i></li>
+        </ul>
+      </div>
+    </div>
+ </div>

@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Ajouter votre reponse</h1>
+<div mat-dialog-content>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Reponse</mat-label>
+    <textarea required matInput  placeholder="Ajouter une reponse" [(ngModel)]="reclamation.reponse"></textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close >No Thanks</button>
+  <button mat-flat-button (click)="add()">Ok</button>
+
+</div>

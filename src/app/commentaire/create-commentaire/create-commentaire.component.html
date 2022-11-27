@@ -1,0 +1,14 @@
+<form class="form-a">
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <div class="form-group">
+        <label for="textMessage">Enter message</label>
+        <textarea id="textMessage" class="form-control" placeholder="Comment *" name="message" cols="45"
+                  rows="3"  [(ngModel)]="commentaire.comment" [ngModelOptions]="{standalone: true}" required></textarea>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <button type="submit" (click)="add()" class="btn btn-a">Send Message</button>
+    </div>
+  </div>
+</form>

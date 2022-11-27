@@ -1,0 +1,16 @@
+<div class="container" style="padding-top: 50px;padding-left:80px; padding-bottom: 50px;" >
+    <div class="title-box-d" >
+      <h3 class="title-d">Booster votre annonce <i style="color: #2eca6a;" class="fa fa-level-up" aria-hidden="true"></i></h3>
+    </div>
+    <img style="padding-left: 80px; padding-top: 0.5px; padding-bottom: 10%;" src="assets/img/coupon.png" alt="">
+<h4 >Ajouter un coupon à votre annonce</h4>
+<input  type="text"  [(ngModel)]="this.code" style="margin-right: 30px;" >
+
+
+<button (click)="onsubmit()" style="background-color:  #2eca6a ;  border:#2eca6a ;" class="btn btn-primary"  > Ajouter </button>
+<div style="width: 168px;" class="alert alert-danger" *ngIf="erreur">
+  {{erreur}}
+  </div>
+</div>
+
+ 

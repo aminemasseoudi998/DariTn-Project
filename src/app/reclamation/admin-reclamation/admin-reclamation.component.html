@@ -1,0 +1,42 @@
+<div class=" container-fluid">
+  <div class="col-12 d-flex justify-content-lg-end">
+
+  </div>
+</div>
+
+<table class="table">
+  <thead>
+  <tr>
+
+    <th scope="col">Username</th>
+    <th scope="col">Titre</th>
+    <th scope="col">Sujet</th>
+    <th scope="col">Date</th>
+
+    <th scope="col">Ajouter votre reponse</th>
+    <th scope="col">status</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let reclamation of reclamations">
+
+    <td >{{reclamation.user?.username}}</td>
+    <td>{{reclamation.titre}}</td>
+    <td>{{reclamation.sujet}}</td>
+    <td>{{reclamation.date | date}}</td>
+
+    <td>
+
+      <div class="example-button-container">
+        <button mat-mini-fab color="primary" aria-label="Example icon button with a plus one icon" (click)="openAddDialog(reclamation.id)">
+          <mat-icon>plus_one</mat-icon>
+        </button>
+      </div>
+
+    </td>
+
+    <td>{{reclamation.status}}</td>
+  </tr>
+
+  </tbody>
+</table>

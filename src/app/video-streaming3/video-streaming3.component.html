@@ -1,0 +1,9 @@
+<div style="text-align:center">
+  <h1>Welcome to WebRTC</h1>
+  <video class="video" #video autoplay controls></video>
+  <span class="m-1"></span>
+  <video class="video" style="width:360 !important;" controls #recordedVideo></video>
+  <br>
+  <button class="btn btn-primary btn-lg" *ngIf="!isRecording" (click)="startRecording()">Start Recording</button>
+  <button class="btn btn-warning btn-lg" *ngIf="isRecording" (click)="stopRecording()">Stop Recording</button>
+</div>

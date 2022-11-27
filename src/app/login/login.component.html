@@ -1,0 +1,73 @@
+<div  *ngIf="!isLoggedIn"  class="container" style="padding-top: 60px;padding-left:0px;">
+    <div class="title-box-d">
+        <h3 class="title-d">Connexion</h3>
+    </div>
+
+
+
+    <form class="form-a" *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+        <div class="row">
+            <div class="col-md-8 mb-2">
+                <div class="form-group">
+
+                    <i class="fa fa-user" style="padding-left: 5px;padding-right: 10px;"></i><label for="Type">Pseudo</label> 
+
+                    <input type="text" class="form-control form-control-lg form-control-a" placeholder="Keyword"
+                        name="username" [(ngModel)]="user.username" required #username="ngModel" />
+                    <div class="alert alert-danger" role="alert" *ngIf="username.errors && f.submitted">
+                        Pseudo est obligatoire
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 mb-2">
+                <div class="form-group">
+
+                    <i class="fa fa-key" style="padding-left: 5px;padding-right: 10px;"></i>
+                    <label for="Type">Mot de passe</label>
+
+                    <input type="password" class="form-control form-control-lg form-control-a" placeholder="Keyword "
+                        name="password" [(ngModel)]="user.password" required minlength="6" #password="ngModel" />
+                    <div class="alert alert-danger" role="alert" *ngIf="password.errors && f.submitted">
+                        <div *ngIf="password.errors['required']">Le mot de passe est obligatoire</div>
+                        <div *ngIf="password.errors['minlength']">
+                            Le mot de passe doit contenir minumum 6 caracteres
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="form-group col-md-12">
+                <button type="submit" class="btn btn-b">Se connecter</button>
+
+            </div>
+
+            <div class="form-group">
+                <div class="alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">
+                    Login failed: {{ errorMessage }}
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div  style="padding-top: 30px; padding-left:170px ; padding-bottom: 50px;" *ngIf="isLoggedIn">
+    <img style="padding-left: 220px;" src="assets/img/loged.png" alt="">
+    <h1 style="padding-left: 320px;"> Bienvenu parmis nous  {{Username}} !</h1>
+
+    <div style="padding-left: 250px;">
+      <div class="card" style="width: 28rem;">
+
+        <ul class="list-group list-group-flush">
+
+          <li class="list-group-item" routerLink="/profile">Voir mon profile et mes annnonces <i style="color: #2eca6a; padding-left: 170px;" class="fa fa-arrow-right" aria-hidden="true"></i> </li>
+          <li class="list-group-item" routerLink="/annonces">Vois les annonces <i style="color: #2eca6a; padding-left: 275px;" class="fa fa-arrow-right" aria-hidden="true"></i></li>
+          <li class="list-group-item" routerLink="/add">Creer une annonce <i style="color: #2eca6a; padding-left: 270px;" class="fa fa-arrow-right" aria-hidden="true"></i></li>
+        </ul>
+      </div>
+    </div>
+
+</div>

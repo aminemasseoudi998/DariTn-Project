@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Modifier Reclamation</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="outline">
+    <mat-label>Titre</mat-label>
+    <input matInput placeholder="Modifier un titre" [(ngModel)]="reclamation.titre">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Sujet</mat-label>
+    <textarea matInput  placeholder="Modifier  un sujet" [(ngModel)]="reclamation.sujet"></textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close >No Thanks</button>
+  <button mat-flat-button (click)="update()">Ok</button>
+
+</div>

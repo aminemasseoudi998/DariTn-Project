@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Ajouter Reclamation</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="outline">
+    <mat-label>Titre</mat-label>
+    <input required matInput placeholder="Ajouter un titre" [(ngModel)]="reclamation.titre">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Sujet</mat-label>
+    <textarea required matInput  placeholder="Ajouter un sujet" [(ngModel)]="reclamation.sujet"></textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close >No Thanks</button>
+  <button style="background-color: #2eca6a" mat-flat-button (click)="add()">Ok</button>
+
+</div>

@@ -1,0 +1,153 @@
+
+
+                <div class="col-md-12">
+               
+                </div>
+      
+
+
+
+
+
+
+
+
+
+
+<!--/ Contact Star /-->
+
+
+
+
+
+
+
+
+<div class="container-fluid" *ngIf="!isSuccessful" >
+  
+  <div class="title-box-d section-t3">
+    
+    <h3 class="title-d">Créer un transporteur</h3>
+   
+  </div>
+ 
+  <form  name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+  
+      <div class="form-group">
+          <label> Nom de transporteur</label>
+          <input type="text" class="form-control" id="titre"
+          [(ngModel)]="transporteur.nom" #titre="ngModel" name="titre" required>
+          
+  
+      </div>
+      <div class="alert-danger" *ngIf="titre.errors && f.submitted">
+        <div *ngIf="titre.errors['required']">Le nom est obligatoir !</div>
+        
+        </div>
+   
+
+
+
+
+        <div class="form-group">
+          <label> prenom</label>
+          <input type="text" class="form-control" id="description"
+          [(ngModel)]="transporteur.prenom" name="description" #description="ngModel" name="description"
+          rrequire>
+  
+      </div>
+      <div class="alert-danger" *ngIf="titre.errors && f.submitted">
+        <div *ngIf="titre.errors['required']">Le prenom est obligatoir !</div>
+        
+        </div>
+      <div class="form-group">
+      <section>
+            <label> Type d'annonce </label>
+            <select class="custom-select" [(ngModel)]="transporteur.etat" name="typeAnnonce" #typeAnnonce="ngModel" [ngModelOptions]="{standalone:true}"
+            required>
+            <option value="DISPONIBLE">Disponible</option>
+            <option value="INDISPONIBLE"> Non-Disponible</option>
+            </select>
+       
+      </section>
+    </div>
+    <div class="alert-danger" *ngIf="titre.errors && f.submitted">
+      <div *ngIf="titre.errors['required']">L'etat est obligatoir !</div>
+      
+      </div>
+  
+     
+   
+  
+      <div class="form-group">
+          <label> Numero</label>
+          <input type="text" class="form-control" id="prix"
+          [(ngModel)]="transporteur.num" name="prix" #prix="ngModel" name="prix"
+          required>
+  
+      </div>
+      <div class="alert-danger" *ngIf="titre.errors && f.submitted">
+        <div *ngIf="titre.errors['required']">Le numero est obligatoir !</div>
+        
+        </div>
+  
+        
+      <div class="form-group">
+        <label> cin </label>
+        <input type="text" class="form-control" id="prix"
+        [(ngModel)]="transporteur.cin" name="prix" #prix="ngModel" name="prix"
+        required>
+
+    </div>
+    <div class="alert-danger" *ngIf="titre.errors && f.submitted">
+      <div *ngIf="titre.errors['required']">Le numero est obligatoir !</div>
+      
+      </div>
+    
+    
+      
+  
+      
+  
+   
+     
+      <!--start upload image !! -->
+    
+        
+       
+    
+      
+    
+    <!--end upload image !!!! -->
+    <input type="file" #img accept="image/*" multiple hidden (change)="imageLoad($event)" 
+    required >
+    <a class="btn-primary btn " class="btn btn-danger" (click)="img.click()" style="color: white; margin-bottom: 2%;" >Déposer image(s)</a>
+    
+    <div class="alert-danger" *ngIf="titre.errors && f.submitted">
+      <div *ngIf="titre.errors['required']"> Image obligatoir !</div>
+      
+      </div>
+
+      <div class="modal-footer" >  
+        <button type="button" class="btn btn-a" (click)="addtransporteur(transporteur)">Ajouter</button>
+      </div> 
+      <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+        Signup failed!<br />{{ errorMessage }}
+      </div> 
+  
+      
+   
+  
+  </form>
+ 
+  </div>
+
+
+<!--/ Contact End /-->
+
+
+
+
+
+
+

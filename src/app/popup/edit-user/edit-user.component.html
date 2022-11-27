@@ -1,0 +1,88 @@
+
+  <div class="container" style="padding-top: 50px;padding-left:80px;">
+    <div class="title-box-d" >
+      <h3 class="title-d">Modifier profil</h3>
+    </div>
+    
+    
+      <form class="form-a" *ngIf="!isSuccessful"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate >
+        <div class="row" >
+          
+         
+         
+          <div class="col-md-10 mb-2">
+            <div class="form-group">
+              <label for="Type">email</label>
+              <input type="email" class="form-control form-control-lg form-control-a" 
+              placeholder="Keyword"
+              name="email"
+          [(ngModel)]="user.email"
+          required
+          email
+          #email="ngModel"
+        />
+        <div class="alert-danger" *ngIf="email.errors && f.submitted">
+            <div *ngIf="email.errors['required']">Email is required</div>
+            <div *ngIf="email.errors['email']">
+              Email must be a valid email address
+            </div>
+          </div>
+            </div>
+          </div>
+
+          <div class="col-md-10 mb-2">
+            <div class="form-group">
+              <label for="Type">Telephone</label>
+              <input type="phone" class="form-control form-control-lg form-control-a" 
+              placeholder="Keyword"
+              name="telephone"
+          [(ngModel)]="user.telephone"
+          required
+          minlength="8"
+          maxlength="8"
+          #telephone="ngModel"
+        />
+        <div class="alert-danger" *ngIf="telephone.errors && f.submitted">
+          <div *ngIf="telephone.errors['required']">telephone is required</div>
+          
+          <div *ngIf="telephone.errors['maxlength']">
+            phone number must be 8 characters
+          </div>
+          <div *ngIf="telephone.errors['minlength']">
+            phone number must be 8 characters
+          </div>
+        </div>
+            </div>
+          </div>
+       
+         
+        
+          
+      
+         
+          
+          
+         
+          
+         
+          
+          
+          <div class=" form-group col-md-12">
+            <button type="submit" class="btn btn-b">Modifer</button><br>
+            
+          </div> 
+          <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+            Verifier vos donnees!<br />{{ errorMessage }}
+          </div>
+          
+        </div>
+      </form>
+     
+    
+    </div>
+<br> <br>
+

@@ -1,0 +1,135 @@
+.discount-tag {
+    position: absolute;
+    background: #fff;
+    padding: 8px;
+    border-radius: 5px;
+    background-color: red;
+    right: 10px;
+    top: 10px;
+    text-transform: capitalize;
+  }
+*{
+    font-size: large;
+}
+.jumbotron {
+    background-color: #2eca6a4d !important; 
+}
+
+
+.UserImage {
+    width:15%; 
+    height: 15%;
+    border-radius: 20%; padding-right:40px;position: relative;overflow: hidden;
+}
+
+.card {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.card-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    transition: .5s;
+    overflow: hidden;
+    object-fit: cover;
+}
+.card-image img {
+    display: block;
+    width: 100%;
+}
+
+.social-icons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: .5s;
+    display: flex;
+    z-index: 3;
+}
+
+.social-icons li {
+    list-style-type: none;
+}
+
+.social-icons li a {
+    position: relative;
+    display: block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background: #fff;
+    font-size: 24px;
+    color: #333;
+    margin: 0 5px;
+    transition: .5s;
+    transform: translateY(200px);
+    opacity: 0;
+    visibility: hidden;
+}
+
+.details {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #2eca6ad8;
+    width: 100%;
+    height: 120px;
+    z-index: 1;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.details h2 {
+    margin: 0;
+    color: #333;
+}
+
+.job-title {
+    font-size: 1rem;
+    line-height: 2.5rem;
+    color: #333;
+    font-weight: 300;
+}
+
+.card:hover img {
+    opacity: .4;
+    transition: .5s;
+}
+
+.card:hover li a {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+.card:hover li:nth-child(1) a {
+    transition-delay: .1s;
+}
+.card:hover li:nth-child(2) a {
+    transition-delay: .2s;
+}
+.card:hover li:nth-child(3) a {
+    transition-delay: .3s;
+}
+.card:hover li:nth-child(4) a {
+    transition-delay: .4s;
+}
+.card:hover .card-image {
+    transform: translateY(-120px);
+    transition: .5s;
+}

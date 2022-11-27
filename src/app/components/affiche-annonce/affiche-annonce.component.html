@@ -1,0 +1,64 @@
+<section class="intro-single">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-8">
+          <div class="title-single-box">
+            <h1 class="title-single">Liste d'Annonces</h1>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-4">
+          <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--
+  
+  <button type="button" class="btn btn-primary"(click)="create()"><i class="fa fa-plus" aria-hidden="true"></i> Add </button>
+
+ -->
+
+
+
+
+
+
+<table class="table table-bordered" style="margin-left: 24px;">
+<thead>
+    <tr>
+        <th>Id</th>
+        <th>Titre</th>
+        <th>Type d'annonce</th>
+        <th>Description</th>
+        <th>Localisation</th>
+        <th>Prix</th>
+        <th>Surface</th>
+        <th>Nombre de chambre</th>
+        
+
+        <th>Actions</th>
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor = "let annonce of annonces" >
+    <td>{{ annonce.id }}</td>  
+    <td>{{ annonce.titre }}</td>
+    <td>{{ annonce.typeAnnonce }}</td>
+    <td>{{ annonce.description }}</td>
+    <td>{{ annonce.localisation }}</td>
+    <td>{{ annonce.prix }}</td>
+    <td>{{ annonce.surface }}</td>
+    <td>{{ annonce.nbchambre }}</td>
+    <td>
+       <!-- <button type="button" class="btn btn-success"(click)="update(annonce.id)"><i class="fa fa-edit"></i> Update </button>&nbsp;&nbsp;
+        --><button type="button" class="btn btn-danger"  (click)="deleteRow(annonce.id)"><i class="fa fa-trash" aria-hidden="true"></i> Supprimer </button>
+        
+        
+    </td>
+    </tr>
+    
+
+</tbody>
+</table>

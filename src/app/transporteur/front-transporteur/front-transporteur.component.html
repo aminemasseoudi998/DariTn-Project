@@ -1,0 +1,62 @@
+  <!--/ Intro Single star /-->
+  <section class="intro-single">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-8">
+          <div class="title-single-box">
+            <h1 class="title-single">Nos  Transporteurs</h1>
+          </div>
+          <nav class="navbar" style="padding-left: 35px;">
+            <button type="button" class="btn btn-primary" (click)="demenagement()" style="background-color:  #2eca6a ;  border:#2eca6a ;" ><i class="fa fa-plus" aria-hidden="true" ></i> Demenagement  </button>
+         
+          </nav>
+        </div>
+        <div class="col-md-12 col-lg-4">
+          <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">
+                <button type="button" class="btn btn-primary" (click)="create()" style="background-color:  #2eca6a ;  border:#2eca6a ;" ><i class="fa fa-plus" aria-hidden="true" ></i> Ajouter un Transporteur  </button>
+          
+              </li>
+            </ol>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="property-grid grid">
+
+
+
+  <div class="container">
+    <div class="row">
+
+
+
+
+      <div class="col-md-4" *ngFor='let t of listTransporteur'>
+        <div class="card-box-a card-shadow">
+          <div class="img-box-a" style="height: 400px; width: 300px" >
+            <img [src]="t.placeholder "  height="400" width="300" alt="" >
+          </div>
+          <div class="card-overlay">
+            <div class="card-overlay-a-content">
+              <div class="card-header-a">
+                <h2 class="card-title-a">
+                  <a href="#">{{t.nom}}
+                    <br /> {{t.prenom}}
+                    <br /> {{t.num}}
+                    <br /> {{t.etat}}
+                  </a>
+                </h2>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

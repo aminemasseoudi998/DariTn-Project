@@ -1,0 +1,69 @@
+<div *ngIf="!created" style="width: 400px;height:440px;padding-left: 100px;padding-top: 50px">
+<h1 mat-dialog-title>Ajouter un mobilier</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="outline">
+    <mat-label>Titre</mat-label>
+    <input required matInput placeholder="Ajouter un titre" [(ngModel)]="mobilier.titre">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Description</mat-label>
+    <textarea required matInput  placeholder="Ajouter une description" [(ngModel)]="mobilier.description"></textarea>
+  </mat-form-field>
+
+
+
+  <mat-form-field appearance="fill">
+    <mat-label>Etat du mobilier</mat-label>
+    <mat-select [(value)]="mobilier.etatMobilier">
+      <mat-option>None</mat-option>
+      <mat-option value="Bonne">Bonne etat</mat-option>
+      <mat-option value="Mauvaise">à renover</mat-option>
+      <mat-option value="Moyenne">Moyenne</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+
+  <mat-form-field appearance="fill" floatLabel="always">
+    <mat-label>Prix</mat-label>
+    <input matInput type="number" [(ngModel)]="mobilier.prix" class="example-right-align" placeholder="0">
+    <span matPrefix>DT&nbsp;</span>
+    <span matSuffix>.00</span>
+  </mat-form-field> 
+
+
+
+
+  <input type="file" #img accept="image/*" multiple hidden (change)="imageLoad($event)" 
+  required >
+  
+  <a class="btn-primary btn " class="btn btn-danger" (click)="img.click()" style="color: white; margin-bottom: 2%;" >Déposer image(s)</a>
+
+
+
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close >No Thanks</button>
+  <button style="background-color: #2eca6a" mat-flat-button (click)="add()">Ok</button>
+
+</div>
+</div>
+<div *ngIf="created">
+
+    <img style="padding-right: 0px;" src="assets/img/creer.png" alt="">
+    <h1 style="padding-left: 80px;padding-top: 40px;padding-bottom: 30px"> Votre mobiler a ete creer !</h1>
+
+    <div style="padding-left: 0px;">
+      <div class="card" style="width: 28rem;">
+
+        <ul class="list-group list-group-flush">
+
+          <li class="list-group-item" (click)="closeProfile()">Voir mon profile et mes mobiliers <i style="color: #2eca6a; padding-left: 175px; " class="fa fa-arrow-right" aria-hidden="true"></i> </li>
+          <li class="list-group-item"  (click)="closeMobilier()">Voir tout les mobiliers <i style="color: #2eca6a; padding-left: 243px;" class="fa fa-arrow-right" aria-hidden="true"></i></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+

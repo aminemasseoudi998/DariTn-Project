@@ -1,0 +1,47 @@
+<div class=" container-fluid">
+  <div class="col-12 d-flex justify-content-lg-end">
+    <button class="btn-primary btn" (click)="openAddDialog()">  Ajouter</button>
+  </div>
+</div>
+
+<table class="table">
+  <thead>
+  <tr>
+
+    <th scope="col">Username</th>
+    <th scope="col">Titre</th>
+    <th scope="col">Sujet</th>
+    <th scope="col">Date</th>
+
+
+    <th scope="col">status</th>
+    <th scope="col">Actions</th>
+  </tr>
+
+  </thead>
+  <tbody>
+  <ng-container *ngFor="let reclamation of reclamations">
+  <tr *ngIf="reclamation.user?.id === user.id" >
+
+
+
+    <td >{{reclamation.user?.username}}</td>
+    <td>{{reclamation.titre}}</td>
+    <td>{{reclamation.sujet}}</td>
+    <td>{{reclamation.date | date}}</td>
+
+
+    <td>{{reclamation.status}}</td>
+    <td>
+      <button style="background-color: #2eca6a" mat-icon-button *ngIf="reclamation.user?.id === user.id"
+              class="btn-primary btn" (click)="openUpdateDialog(reclamation.id)" >
+        <mat-icon>edit </mat-icon>
+
+      </button>
+      <button style="background-color: #2eca6a" *ngIf="reclamation.user?.id === user.id" mat-icon-button style="margin-left: 90px;" class="btn-danger btn" (click)="supprimer(reclamation.id)" >  <mat-icon>delete </mat-icon> </button>
+
+    </td>
+  </tr>
+  </ng-container>
+  </tbody>
+</table>

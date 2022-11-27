@@ -1,0 +1,146 @@
+
+<div *ngIf="!isSuccessful" class="container"  style="padding-top: 50px;padding-left:80px;">
+    <div class="title-box-d"  >
+      <h3 class="title-d" >Inscription </h3>
+    </div>
+      <form class="form-a"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate >
+        <div class="row" >
+          <div class="col-md-10 mb-2">
+            <div class="form-group">
+              <i class="fa fa-user" style="padding-left: 5px;padding-right: 10px;"></i>
+              <label for="Type">username</label>
+              <input type="text" class="form-control form-control-lg form-control-a"
+              placeholder="Keyword"
+              name="username"
+              [(ngModel)]="user.username"
+              required
+              minlength="3"
+              maxlength="20"
+              #username="ngModel"
+            />
+            <div class="alert-danger" *ngIf="username.errors && f.submitted">
+                <div *ngIf="username.errors['required']">Username is required</div>
+                <div *ngIf="username.errors['minlength']">
+                  Username must be at least 3 characters
+                </div>
+                <div *ngIf="username.errors['maxlength']">
+                  Username must be at most 20 characters
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-md-10 mb-2">
+            <div class="form-group">
+              <i class="fa fa-envelope" style="padding-left: 5px;padding-right: 10px;"></i>
+              <label for="Type">email</label>
+              <input type="email" class="form-control form-control-lg form-control-a"
+              placeholder="Keyword"
+              name="email"
+          [(ngModel)]="user.email"
+          required
+          email
+          #email="ngModel"
+        />
+        <div class="alert-danger" *ngIf="email.errors && f.submitted">
+            <div *ngIf="email.errors['required']">Email is required</div>
+            <div *ngIf="email.errors['email']">
+              Email must be a valid email address
+            </div>
+          </div>
+            </div>
+          </div>
+
+          <div class="col-md-10 mb-2">
+            <div class="form-group">
+              <i class="fa fa-phone" style="padding-left: 5px;padding-right: 10px;"></i>
+              <label for="Type">Telephone</label>
+              <input type="phone" class="form-control form-control-lg form-control-a"
+              placeholder="Keyword"
+              name="telephone"
+          [(ngModel)]="user.telephone"
+          required
+          minlength="8"
+          maxlength="8"
+          #telephone="ngModel"
+        />
+        <div class="alert-danger" *ngIf="telephone.errors && f.submitted">
+          <div *ngIf="telephone.errors['required']">telephone is required</div>
+
+          <div *ngIf="telephone.errors['maxlength']">
+            phone number must be 8 characters
+          </div>
+          <div *ngIf="telephone.errors['minlength']">
+            phone number must be 8 characters
+          </div>
+        </div>
+            </div>
+          </div>
+
+          <div class="col-md-10 mb-3">
+            <div class="form-group">
+              <i class="fa fa-key" style="padding-left: 5px;padding-right: 10px;"></i>
+              <label for="Type">Mot de passe</label>
+              <input type="password" class="form-control form-control-lg form-control-a"
+              placeholder="Keyword"
+                        name="password"
+                    [(ngModel)]="user.password"
+                    required
+                    minlength="6"
+                    #password="ngModel"
+                    />
+
+                    <div class="alert-danger" *ngIf="password.errors && f.submitted">
+                        <div *ngIf="password.errors['required']">Password is required</div>
+                        <div *ngIf="password.errors['minlength']">
+                          Password must be at least 6 characters
+                        </div>
+                      </div>
+            </div>
+          </div>
+
+
+
+
+
+          <div class=" form-group col-md-12">
+            <button type="submit" class="btn btn-b">S'inscrire</button><br>
+
+          </div> 
+          <div class="alert alert-danger" *ngIf="f.submitted && isSignUpFailed">
+
+            Signup failed!<br />{{ errorMessage }}
+          </div>
+        </div>
+      </form>
+
+
+    </div>
+    <div  *ngIf="isSuccessful">
+
+      <div class="row" >
+      <div class="col-4">
+        <img style="padding-left: 50px;padding-bottom: 100px; " src="assets/img/registred.png" alt="">
+
+      </div>
+      <div class="col-8" style="font-size: 26px;">
+
+        <h1 style="padding-left: px; padding-top: 160px; font-weight: bolder;"> « Il ne faut qu’un œil au vendeur, il en faut cent à l’acheteur. »
+        </h1>
+        <h1 style="padding-left: 120px; padding-top: 10px; font-weight: bolder;">
+          Mais avec DARI.TN <span class="cnn" routerLink="/inscri"> Connectez-vous et Laissez nous faire </span> <i style="color: #2eca6a; padding-left: 20px;" class="fa fa-arrow-right" aria-hidden="true"></i>
+        </h1>
+
+
+      </div>
+
+    </div>
+
+  </div>
+<br> <br>
+

@@ -1,0 +1,144 @@
+<!--/ Intro Single star /-->
+<section class="intro-single">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-8">
+        <div class="title-single-box">
+          <h1 class="title-single">Nos incroyables mobiliers</h1>
+          <span class="color-text-a">tout les mobiliers</span>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Home</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Properties Grid
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="property-grid grid">
+
+
+  <div class=" container-fluid">
+    <div class="col-12 d-flex justify-content-lg-end">
+      <button style="background-color: #2eca6a" class="btn-primary btn" (click)="openAddDialog()">  Ajouter</button>
+    </div>
+  </div>
+
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="grid-option">
+          <form>
+            <select class="custom-select">
+              <option selected>All</option>
+              <option value="1">New to Old</option>
+              <option value="2">For Rent</option>
+              <option value="3">For Sale</option>
+            </select>
+          </form>
+        </div>
+      </div>
+
+
+
+
+
+
+      
+
+
+
+      <div class="col-md-4" *ngFor="let mobilier of mobiliers">
+        <div class="card-box-a card-shadow">
+          <div class="img-box-a" style="height: 400px; width: 300px" >
+            <img [src]="mobilier.placeholder"  height="400" width="300" alt="" >
+          </div>
+          <div class="card-overlay">
+            <div class="card-overlay-a-content">
+              <div class="card-header-a">
+                <h2 class="card-title-a">
+                  <a href="#">   {{mobilier.titre}}
+                    <br /> {{mobilier.description}}</a>
+                </h2>
+              </div>
+              <div class="card-body-a">
+                <div class="price-box d-flex">
+                  <span class="price-a">Prix: {{mobilier.prix}}</span>
+                </div>
+
+                <div class="price-box d-flex">
+                  <a routerLink="/mobilier/{{mobilier.id}}" class="link-a">Click here to view
+                    <span class="ion-ios-arrow-forward"></span>
+                  </a>
+                </div>
+                <a *ngIf="mobilier.vendeur?.id === user.id">
+                  <button style="background-color: #2eca6a" mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)="supprimer(mobilier.id)" >
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </a>
+
+                <button style="background-color: #2eca6a" *ngIf="mobilier.vendeur?.id === user.id" mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)="openUpdateDialog(mobilier.id)" >
+                  <mat-icon >edit </mat-icon>
+
+                </button>
+
+
+
+              </div>
+              <div class="card-footer-a">
+                <ul class="card-info d-flex justify-content-around">
+                  <li>
+                    <h4 class="card-info-title">Date</h4>
+                    <span>{{mobilier.date | date}}
+
+                      </span>
+                  </li>
+
+                  <li>
+                    <h4 class="card-info-title">Etat</h4>
+                    <span>{{mobilier.etatMobilier}}</span>
+                  </li>
+
+                  <li *ngIf="mobilier.status===false ">
+                    <h4  class="card-info-title">Status</h4>
+                    <span>vendu</span>
+                  </li>
+
+                  <li *ngIf="mobilier.status===true">
+                    <h4  class="card-info-title">Status</h4>
+                    <span>disponible</span>
+                  </li>
+
+
+
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+

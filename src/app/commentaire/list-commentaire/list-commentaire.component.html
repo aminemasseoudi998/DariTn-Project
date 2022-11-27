@@ -1,0 +1,117 @@
+<div class="col-md-10 offset-sm-0 col-lg-10 ">
+  <div class="title-box-d">
+    <h3 class="title-d">Comments (4)</h3>
+  </div>
+  <div class="box-comments">
+    <ul class="list-comments">
+
+      <li *ngFor="let comment of sortData">
+        <div class="comment-avatar">
+          <img src="img/author-2.jpg" alt="">
+        </div>
+        <div class="comment-details w-100">
+          <h4 class="comment-author">{{comment.user.username}}</h4>
+          <span>{{comment.dateAjout| date: 'fullDate' }}</span> <span>{{comment.dateAjout| date: 'shortTime' }} </span>
+
+          <p class="comment-description">
+            {{comment.comment}}
+
+          </p>
+          <app-show-reaction-commentaire [commentaire]="comment"> </app-show-reaction-commentaire>
+
+          <div *ngIf="comment.iduser==userlogged.id; then thenBlock"></div>
+          <ng-template #thenBlock> <button type="submit" class="btn btn-danger pull-right" (click)="deleteComment(comment.id)">
+            delete
+          </button> </ng-template>
+          <a href="3">Reply</a>
+        </div>
+
+      </li>
+
+
+      <!--
+          <li>
+            <div class="comment-avatar">
+              <img src="img/author-2.jpg" alt="">
+            </div>
+            <div class="comment-details">
+              <h4 class="comment-author">Emma Stone</h4>
+              <span>18 Sep 2017</span>
+              <p class="comment-description">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores reprehenderit, provident cumque
+                ipsam temporibus maiores
+                quae natus libero optio, at qui beatae ducimus placeat debitis voluptates amet corporis.
+              </p>
+              <a href="3">Reply</a>
+            </div>
+          </li>
+          <li class="comment-children">
+            <div class="comment-avatar">
+              <img src="img/author-1.jpg" alt="">
+            </div>
+            <div class="comment-details">
+              <h4 class="comment-author">Oliver Colmenares</h4>
+              <span>18 Sep 2017</span>
+              <p class="comment-description">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores reprehenderit, provident cumque
+                ipsam temporibus maiores
+                quae.
+              </p>
+              <a href="3">Reply</a>
+            </div>
+          </li>
+          <li style="margin-left: 80px;">
+            <div class="comment-avatar">
+              <img src="img/author-1.jpg" alt="">
+            </div>
+            <div class="comment-details">
+              <h4 class="comment-author">Oliver Colmenares</h4>
+              <span>18 Sep 2017</span>
+              <p class="comment-description">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores reprehenderit, provident cumque
+                ipsam temporibus maiores
+                quae.
+              </p>
+              <a href="3">Reply</a>
+            </div>
+          </li>
+          <li class="comment-children" >
+            <div class="comment-avatar">
+              <img src="img/author-1.jpg" alt="">
+            </div>
+            <div class="comment-details">
+              <h4 class="comment-author">Oliver Colmenares</h4>
+              <span>18 Sep 2017</span>
+              <p class="comment-description">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores reprehenderit, provident cumque
+                ipsam temporibus maiores
+                quae.
+              </p>
+              <a href="3">Reply</a>
+            </div>
+          </li>
+          <li>
+            <div class="comment-avatar">
+              <img src="img/author-2.jpg" alt="">
+            </div>
+            <div class="comment-details">
+              <h4 class="comment-author">Emma Stone</h4>
+              <span>18 Sep 2017</span>
+              <p class="comment-description">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores reprehenderit, provident cumque
+                ipsam temporibus maiores
+                quae natus libero optio.
+              </p>
+              <a href="3">Reply</a>
+            </div>
+          </li>
+          -->
+    </ul>
+  </div>
+  <div class="form-comments">
+    <div class="title-box-d">
+      <h3 class="title-d"> Leave a Reply</h3>
+    </div>
+    <app-create-commentaire></app-create-commentaire>
+  </div>
+</div>

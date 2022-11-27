@@ -1,0 +1,20 @@
+.container-fluid{
+    margin-left: 420px;
+    margin-top: 20px;
+    padding-bottom: 13px;
+    padding-top: 13px;
+    width: 40%;
+}
+
+
+#RDV{
+    background-color: #2eca6a;
+     border-color: #2eca6a;
+     margin-left: 900px;
+  }
+  
+  #RDV:hover{
+  color: #2eca6a;
+  background-color: white;
+  border-color: #2eca6a;
+  }

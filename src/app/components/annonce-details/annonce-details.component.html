@@ -1,0 +1,182 @@
+
+  <!--/ Nav End /-->
+
+
+  <!--/ Intro Single star /-->
+  
+  <div class="col-md-12 section-t8" style="padding-left: 130px;">
+    <div class="title-box-d">
+      <h3 class="title-d">{{annonce.titre}}</h3>
+      
+    
+    </div>
+    
+  </div>
+  <div class="col-md-10 offset-md-1">
+    
+  <button *ngIf="!Proprietaire" id="RDV" class="btn btn-primary"  (click)="PrendreRDV(annonce.id,annonce.localisation)"><i class="fa fa-calendar" aria-hidden="true"></i> prenre un rendez vous</button>
+    <ngb-carousel #carousel [interval]="10000" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus" (slide)="onSlide($event)">
+      <ng-template ngbSlide *ngFor="let img of annonce.imageVideo; index as i">
+        
+        <a href="https://www.google.fr/?q=Number+{{i+1}}" target="_blank" rel="nofollow noopener noreferrer">
+          <div class="picsum-img-wrapper">
+            <img [src]="img.image" style="width: 80vw; height: 500px" alt="My image {{i + 1}} description">
+          </div>
+        </a>
+      </ng-template>
+    </ngb-carousel>
+  </div>
+  <hr style="border: 2px solid #2eca6a; margin-left: 180px; margin-right: 180px;">
+ 
+  <!--/ Intro Single End /-->
+
+  <!--/ Property Single Star /-->
+
+  <section class="property-single nav-arrow-b">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          
+          <div class="row justify-content-between">
+            <div class="col-md-5 col-lg-4">
+             
+              <div class="property-summary">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="title-box-d section-t4">
+                      <h3 class="title-d">Détails</h3>
+                    </div>
+                  </div>
+                </div>
+                <div class="summary-list">
+                  <ul class="list">
+                    
+                   
+                    <li class="d-flex justify-content-between">
+                      <strong>Localisation:</strong>
+                      <span>{{annonce.localisation}}</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>Prix:</strong>
+                      <span>{{annonce.prix}} DT</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>Type d'annonce:</strong>
+                      <span>{{annonce.typeAnnonce}}</span>
+                    </li>
+                   
+                    <li class="d-flex justify-content-between">
+                      <strong>Surface:</strong>
+                      <span>{{annonce.surface}}
+                        <sup>2</sup>
+                      </span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>Nombre de chambres:</strong>
+                      <span>{{annonce.nbchambre}}</span>
+                    </li>
+                    <li class="d-flex justify-content-between" *ngIf="!Proprietaire">
+                      <strong> Contacter l'annonceur: </strong>
+                      <div ><button id="cal"  class="btn btn-primary" (click)="recupererCoordonees(annonce.id)"> Coordonnées  </button></div>
+                    </li>
+                    <br>
+
+                    <li class="d-flex justify-content-between" *ngIf="hasCoupon && Proprietaire" >
+                      <ngb-alert type="success" style="width: 550px;" (closed)="close(alert)">
+                        <i class="fa fa-rocket" style="padding-right: 10px ;" aria-hidden="true"></i>
+                         Votre annonce est boostée
+                        
+                      </ngb-alert>
+
+                    </li>
+                    <li class="d-flex justify-content-between" *ngIf="!hasCoupon && Proprietaire">
+                      <strong>Booster votre annonce:</strong>
+                      <div class="cal"><button class="btn btn-primary" style="background-color:  #2eca6a ; border:#2eca6a ;" (click)="affecterCoupon(annonce.id)"> Ajouter un coupon  </button></div>
+                    </li>
+                    
+                 
+                 
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-7 col-lg-7 section-md-t3" style="padding-top: 65px;">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="title-box-d">
+                    <h3 class="title-d" >Description</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="property-description">
+                <p class="description color-text-a">
+                  {{annonce.description}}
+                </p>
+                <p class="description color-text-a no-margin">
+                  
+                </p>
+              </div>
+
+             
+            
+              
+            </div>
+          </div>
+        </div>
+       
+      </div>
+    </div>
+  </section>
+ <br><br>
+   
+  <section class="product" *ngIf="nbannoncesimilaires !=0" > 
+
+
+    <div  style="padding-left: 95px;">
+      <div class="title-box-d">
+        <h3 class="title-d">Annonces similaires</h3>
+      </div>
+    </div>
+    <button class="pre-btn"><img src="assets/img/fleche.png" alt=""></button>
+    <button class="nxt-btn"><img src="assets/img/fleche.png" alt=""></button>
+    <div class="product-container" >        
+       
+     
+  <div class="product-card" *ngFor="let a of annonces" >
+    <div class="product-image">
+        <span class="discount-tag"> {{a.id}}</span>
+        <img [src]="a.placeholder" class="product-thumb" alt="">
+        <button class="card-btn" [routerLink]="['/annonces',a.id]"> Voir annonce </button>
+    </div>
+    <div class="product-info">
+        <h3 class="product-brand">{{a.titre}}</h3>
+        <h4 class="product-short-description">{{a.localisation}}</h4>
+        <span class="price">{{a.prix}} DT </span>
+    </div>
+</div>
+        
+    </div>
+</section>
+  <br><br>
+  <!--/ Property Single End /-->
+
+  <!--/ footer Star /-->
+  <script>
+    
+    const productContainers = [...document.querySelectorAll('.product-container')];
+const nxtBtn = [...document.querySelectorAll('.nxt-btn')];
+const preBtn = [...document.querySelectorAll('.pre-btn')];
+
+productContainers.forEach((item, i) => {
+    let containerDimensions = item.getBoundingClientRect();
+    let containerWidth = containerDimensions.width;
+
+    nxtBtn[i].addEventListener('click', () => {
+        item.scrollLeft += containerWidth;
+    })
+
+    preBtn[i].addEventListener('click', () => {
+        item.scrollLeft -= containerWidth;
+    })
+})
+  </script>

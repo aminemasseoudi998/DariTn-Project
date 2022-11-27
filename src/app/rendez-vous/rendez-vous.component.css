@@ -1,0 +1,42 @@
+h1{
+    margin-left: 120px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+input{
+    width: 50%;
+    margin-top: 20px;
+    margin-left: 100px;
+    margin-bottom: 30px;
+}
+#confirm{
+ margin-left: 130px;
+ margin-bottom: 20px;
+ background-color: white;
+     border-color: #2eca6a;
+     color: #2eca6a;
+}
+
+#annuler{
+   
+    background-color: white;
+        border-color: red;
+        color: red;
+        margin-left: 10px;
+        width: 100px;
+        margin-bottom: 20px;
+   }
+
+
+
+  
+  #confirm:hover{
+  color: white;
+  background-color:#2eca6a;
+  border-color: #2eca6a;
+  }
+  #annuler:hover{
+    color: white;
+    background-color:red;
+    border-color: red;
+    }

@@ -1,0 +1,17 @@
+
+
+
+ <form class="form-a"  name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" >
+    
+<div class="form-group">
+    <h1> Fixer un rendez-vous </h1>
+<input type="datetime-local" value="2022-05-8T08:30:00" min="2022-05-07T08:30:00"  max="2022-05-29T12:30:00"  name="RDV.dateRDV" class="form-control form-control-lg form-control-a"  
+[(ngModel)]="RDV.dateRDV" required >
+</div>
+<div style="font-size: 18px" class="alert alert-danger" *ngIf="ErrorRDV">
+    {{ErrorRDV}}
+</div>
+<button id="confirm" class="btn btn-1" type="submit">Confirmer</button>
+<button id="annuler" type="button" (click)="closeRDV()" class="btn btn-2" >Annuler</button>
+
+</form>

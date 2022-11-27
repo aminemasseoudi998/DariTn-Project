@@ -1,0 +1,189 @@
+
+
+<div class="container"  *ngIf="currentUser; else loggedOut">
+         
+  
+ <!-- <div class="form-check form-switch">
+    <input (click)="ModeDECO()" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+    <label *ngIf="Userstatus == 'connected' " class="form-check-label" for="flexSwitchCheckDefault">Activez le mode hors-ligne</label>
+    <label *ngIf="Userstatus == 'disconnected'" class="form-check-label" for="flexSwitchCheckDefault">DesActivez le mode hors-ligne</label>
+  </div>
+-->
+ 
+  
+     
+       <div class="row">
+        <div class="col-md-12 section-t8">
+          <div class="title-box-d">
+            <h3 class="title-d">Mes informations </h3>
+            
+          </div>
+        </div>
+        
+        <div class="col">
+          <div class="row">
+            <div class="card">
+              <div class="card-image">
+                
+                <img [src]="user.image"  alt="">
+              </div>
+              
+              <div class="details">
+                <input type="file" #img accept="image/*" multiple hidden (change)="imageLoad($event)" [(ngModel)]="image">
+  <a style="color: white;" (click)="img.click()" >Changer image</a>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-7">
+          
+          <div class="agent-title">
+            <div class="title-box-d">
+              <h3  class="title-d">{{user.username}}  <button type="button" style="background-color: #2eca6a; border-color: #2eca6a;" (click)="update(user)" class="btn btn-primary">
+                <i class="fa fa-cog red"  aria-hidden="true"></i>
+              </button> </h3>
+            </div>
+            <p *ngFor="let alert of alerts">
+              <ngb-alert type="warning" style="width: 550px;" (closed)="close(alert)">
+                <i class="fa fa-bell" style="padding-right: 10px ;" aria-hidden="true"></i>
+                {{ alert }} 
+                
+              </ngb-alert>
+            </p>
+          </div>
+
+          
+          
+          <br><br>
+          <div class="info-agents color-a">
+            
+            
+            <p>
+              <strong>Phone: </strong>
+              <span class="color-text-a"> <span style="color: #2eca6a;"> (+216) </span> {{ user.telephone }} </span>
+            </p>
+
+            <p>
+              <strong>Email: </strong>
+              <span class="color-text-a"> {{user.email}}</span>
+            </p>
+
+            <p>
+              <strong>Annonces : </strong>
+              <span class="color-text-a">Vous avez <strong style="color: #2eca6a;"> {{ CountAnnonce }}   Annonces</strong></span>
+            </p>
+           
+           
+            <p>
+              <strong>Coupons : </strong>
+              <span class="color-text-a">Vous avez <strong style="color: #2eca6a;"> 2 Coupons</strong> prets a etre utilisés</span>
+            </p>
+          </div>  
+          
+        </div>
+       </div>
+
+       <div class="col-md-12 section-t8">
+        <div class="title-box-d">
+          <h3 class="title-d">Mes Annonces ({{ CountAnnonce }}) </h3>
+        </div>
+      </div>
+
+      <div class="row property-grid grid">
+        <!--<div class="col-sm-12">
+          <div class="grid-option">
+            <form>
+              <select class="custom-select">
+                <option selected>All</option>
+                <option value="1">New to Old</option>
+                <option value="2">For Rent</option>
+                <option value="3">For Sale</option>
+              </select>
+            </form>
+          </div>
+        </div>
+      -->
+
+      <div class="col-md-4" *ngFor="let a of ListAnnonce;">
+        <div class="card-box-a card-shadow">
+          
+          <div class="img-box-a">
+             <img style="width: 100%; height: 100%;" src="https://leguearchitecture.com/wp-content/uploads/2020/02/a-etage-1.jpg">
+          </div>
+          <div class="card-overlay">
+            
+            <div class="card-overlay-a-content">
+              <div class="card-header-a">
+                <h2 class="card-title-a">
+                  {{ a.titre}}
+                </h2>
+              </div>
+              <div class="card-body-a">
+                <div class="price-box d-flex">
+                  <span class="price-a"> {{ a.localisation}}</span>
+                  
+                </div>
+                <a [routerLink]="['/update', a.id]" class="link-a">Modfier annonce
+                  <span class="ion-ios-arrow-forward"></span>
+                </a>
+                <div class="discount-tag"><button (click)="supprimerAnnonce(a.id)" style="background-color: rgba(255, 255, 255, 0);border: none;"> <i (click)="supprimerAnnonce(a.id)" style="color: white; font-size: 20px;" class="fa fa-trash" aria-hidden="true"></i></button> </div>
+           
+              </div>
+              <div class="card-footer-a">
+                <ul class="card-info d-flex justify-content-around">
+                  <li>
+                    <h4 class="card-info-title">Superficie </h4>
+                    <span>{{a.surface}}m
+                      <sup>2</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <h4 class="card-info-title">Prix</h4>
+                    <span>{{a.prix}} DT</span>
+                  </li>
+                  <li>
+                    <h4 class="card-info-title">Chambres</h4>
+                    <span style="padding-left: 30px;">{{a.nbchambre}}</span>
+                  </li>
+                 
+                 
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12 section-t8">
+        <div class="title-box-d">
+          <h3 class="title-d">Mes Rendez-vous ({{ Countrdv }}) </h3>
+        </div>
+      </div>
+
+        
+        <table>
+          <tr>
+            
+            <th>date</th>
+            <th>Localisation </th>
+            <th>Actions</th>
+          </tr>
+          <tr *ngFor="let r of ListRDV">
+              
+              <td> {{ r.dateRDV | date }} </td>
+              <td> {{ r.annonce.localisation }}</td>
+              <td><button (click)="deleteRDV(r.id)" style="background-color:rgba(240, 255, 255, 0); border: none;" ><i style="color: red; font-size:26px;" class="fa fa-trash"></i></button>
+               <!-- <button  (click)="reschedule(r.id)"  style="background-color:rgba(240, 255, 255, 0); border: none;"><i style="color: rgb(0, 174, 255);font-size:26px;" class="far fa-calendar-alt"></i></button>
+            -->
+              </td>
+          </tr>
+        </table>
+
+     
+    </div>
+  </div>
+  <br><br>
+  <ng-template #loggedOut>
+    Please login.
+  </ng-template>
